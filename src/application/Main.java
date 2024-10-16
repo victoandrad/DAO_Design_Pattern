@@ -2,7 +2,11 @@ package application;
 
 import model.dao.DaoFactory;
 import model.dao.SellerDao;
+import model.entities.Department;
 import model.entities.Seller;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,5 +17,11 @@ public class Main {
         Seller seller = sellerDao.findById(5);
         System.out.println(seller);
 
+        System.out.println("\n=== TEST 1: seller findByDepartment ===");
+        Department department = new Department(2, null);
+        List<Seller> list = sellerDao.findByDepartment(department);
+        for (Seller s : list) {
+            System.out.println(s);
+        }
     }
 }
